@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { LogOut, PenSquare, Home, FileText } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { LogoMark } from './Logo';
 import toast from 'react-hot-toast';
 
 const Navbar = () => {
@@ -25,10 +26,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-8">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">B</span>
-              </div>
-              <span className="text-xl font-bold text-gray-100">BlogPlatform</span>
+              <LogoMark size={32} />
+              <span className="font-serif text-xl tracking-tight text-gray-100">
+                <span className="font-semibold">Blog</span>
+                <span className="font-normal italic">Foundry</span>
+              </span>
             </Link>
             
             <div className="hidden md:flex items-center space-x-1">

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserPlus } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../utils/api';
+import { LogoMark } from '../components/Logo';
 import toast from 'react-hot-toast';
 
 const SignupPage = () => {
@@ -36,7 +37,7 @@ const SignupPage = () => {
     try {
       const response = await api.register(name, email, password);
       login(response.user);
-      toast.success('Account created! Welcome to BlogPlatform');
+      toast.success('Account created! Welcome to BlogFoundry');
       navigate('/');
     } catch (error) {
       toast.error(error.message || 'Registration failed');
@@ -49,11 +50,11 @@ const SignupPage = () => {
     <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-black">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl mb-4">
-            <span className="text-white font-bold text-2xl">B</span>
+          <div className="inline-flex mb-4">
+            <LogoMark size={64} />
           </div>
           <h1 className="text-3xl font-bold text-gray-100 mb-2">Create Account</h1>
-          <p className="text-gray-400">Sign up to get started with BlogPlatform</p>
+          <p className="text-gray-400">Sign up to get started with BlogFoundry</p>
         </div>
 
         <div className="bg-gray-custom border border-gray-800 rounded-xl p-6 shadow-lg">

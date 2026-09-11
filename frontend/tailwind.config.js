@@ -1,9 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    darkMode: 'class',
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     theme: {
       extend: {
+        fontFamily: {
+          serif: ['"Fraunces"', 'Georgia', 'ui-serif', 'serif']
+        },
         colors: {
+          paper: {
+            DEFAULT: '#FBFAF7',
+            muted: '#F3F0EA'
+          },
           gray: {
             25: '#FCFCFD',
             50: '#F9FAFB',
