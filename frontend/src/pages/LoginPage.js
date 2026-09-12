@@ -99,9 +99,9 @@ const LoginPage = () => {
 
         <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center lg:flex-none">
           <div className="mb-8">
-            <h2 className="font-serif text-3xl font-medium text-gray-900 dark:text-white">Welcome back</h2>
+            <h2 className="font-serif text-3xl font-medium text-gray-900 dark:text-white">Welcome!</h2>
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              Sign in to keep writing where you left off.
+              Welcome! Sign in to begin and pick up right where you left off anytime.
             </p>
           </div>
 
