@@ -101,7 +101,7 @@ const LoginPage = () => {
           <div className="mb-8">
             <h2 className="font-serif text-3xl font-medium text-gray-900 dark:text-white">Welcome!</h2>
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              Welcome! Sign in to begin and pick up right where you left off anytime.
+              Sign in to begin and pick up right where you left off anytime.
             </p>
           </div>
 
