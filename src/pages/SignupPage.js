@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserPlus } from 'lucide-react';
+import { UserPlus, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../utils/api';
 import { LogoMark } from '../components/Logo';
@@ -53,7 +53,7 @@ const SignupPage = () => {
           <div className="inline-flex mb-4">
             <LogoMark size={64} />
           </div>
-          <h1 className="text-3xl font-bold text-gray-100 mb-2">Create Account</h1>
+          <h1 className="text-3xl font-semibold text-gray-100 mb-2">Create Account</h1>
           <p className="text-gray-400">Sign up to get started with BlogFoundry</p>
         </div>
 
@@ -121,7 +121,7 @@ const SignupPage = () => {
               className="btn-primary w-full flex items-center justify-center space-x-2"
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <Loader2 className="w-5 h-5 animate-spin" />
               ) : (
                 <>
                   <UserPlus size={18} />

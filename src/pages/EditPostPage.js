@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { api } from '../utils/api';
 import toast from 'react-hot-toast';
-import { Save, X } from 'lucide-react';
+import { Save, X, Loader2 } from 'lucide-react';
 
 const EditPostPage = () => {
   const { id } = useParams();
@@ -108,7 +108,7 @@ const EditPostPage = () => {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-100 mb-2">Edit Post</h1>
+          <h1 className="text-4xl font-semibold text-gray-100 mb-2">Edit Post</h1>
           <p className="text-gray-400">Update your article</p>
         </div>
 
@@ -209,7 +209,7 @@ const EditPostPage = () => {
               className="btn-primary flex items-center space-x-2"
             >
               {saving ? (
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <Loader2 className="w-5 h-5 animate-spin" />
               ) : (
                 <>
                   <Save size={18} />

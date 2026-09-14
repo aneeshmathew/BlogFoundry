@@ -55,7 +55,7 @@ const MyPostsPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-4xl font-bold text-gray-100 mb-2">My Posts</h1>
+            <h1 className="text-4xl font-semibold text-gray-100 mb-2">My Posts</h1>
             <p className="text-gray-400">Manage your published articles</p>
           </div>
           <Link to="/create" className="btn-primary flex items-center space-x-2">
@@ -97,7 +97,7 @@ const MyPostsPage = () => {
                     </div>
 
                     <Link to={`/post/${post._id}`}>
-                      <h2 className="text-2xl font-bold text-gray-100 mb-2 hover:text-primary-400 transition-colors">
+                      <h2 className="text-2xl font-semibold text-gray-100 mb-2 hover:text-primary-400 transition-colors">
                         {post.title}
                       </h2>
                     </Link>
@@ -116,14 +116,14 @@ const MyPostsPage = () => {
                   <div className="flex items-center space-x-2 ml-4">
                     <Link
                       to={`/edit/${post._id}`}
-                      className="p-2 text-gray-400 hover:text-primary-400 hover:bg-gray-800 rounded-lg transition-colors"
+                      className="p-2 border border-transparent text-gray-400 hover:border-primary-800 hover:text-primary-400 rounded-lg transition-colors"
                       title="Edit post"
                     >
                       <Edit2 size={18} />
                     </Link>
                     <button
                       onClick={() => setDeleteConfirm(post._id)}
-                      className="p-2 text-gray-400 hover:text-error-400 hover:bg-gray-800 rounded-lg transition-colors"
+                      className="p-2 border border-transparent text-gray-400 hover:border-error-800 hover:text-error-400 rounded-lg transition-colors"
                       title="Delete post"
                     >
                       <Trash2 size={18} />

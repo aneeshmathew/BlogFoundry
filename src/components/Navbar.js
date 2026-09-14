@@ -36,10 +36,10 @@ const Navbar = () => {
             <div className="hidden md:flex items-center space-x-1">
               <Link
                 to="/"
-                className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`flex items-center space-x-2 border px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   isActive('/')
-                    ? 'bg-primary-600 text-white'
-                    : 'text-gray-400 hover:text-gray-100 hover:bg-gray-700'
+                    ? 'border-primary-500 text-primary-400'
+                    : 'border-transparent text-gray-400 hover:border-gray-700 hover:text-gray-100'
                 }`}
               >
                 <Home size={18} />
@@ -48,10 +48,10 @@ const Navbar = () => {
               
               <Link
                 to="/my-posts"
-                className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`flex items-center space-x-2 border px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   isActive('/my-posts')
-                    ? 'bg-primary-600 text-white'
-                    : 'text-gray-400 hover:text-gray-100 hover:bg-gray-700'
+                    ? 'border-primary-500 text-primary-400'
+                    : 'border-transparent text-gray-400 hover:border-gray-700 hover:text-gray-100'
                 }`}
               >
                 <FileText size={18} />
@@ -83,7 +83,7 @@ const Navbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="text-gray-400 hover:text-gray-100 transition-colors p-2 hover:bg-gray-900 rounded-lg"
+                className="border border-transparent text-gray-400 hover:border-gray-700 hover:text-gray-100 transition-colors p-2 rounded-lg"
                 title="Logout"
               >
                 <LogOut size={18} />

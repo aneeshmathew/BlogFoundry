@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff, LogIn, Sun, Moon, Clock } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, LogIn, Sun, Moon, Clock, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { api } from '../utils/api';
@@ -91,7 +91,7 @@ const LoginPage = () => {
             type="button"
             onClick={toggleTheme}
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-            className="ml-auto flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:bg-gray-100 dark:border-gray-800 dark:text-gray-400 dark:hover:bg-gray-900"
+            className="ml-auto flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-gray-400 hover:text-gray-700 dark:border-gray-800 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:text-gray-200"
           >
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
@@ -156,7 +156,7 @@ const LoginPage = () => {
               className="btn-primary !py-3 flex w-full items-center justify-center space-x-2"
             >
               {loading ? (
-                <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                <Loader2 className="h-5 w-5 animate-spin" />
               ) : (
                 <>
                   <LogIn size={18} />
