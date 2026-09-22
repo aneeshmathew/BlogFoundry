@@ -1,37 +1,52 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff, LogIn, Sun, Moon, Clock, Loader2 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Lock, Eye, EyeOff, Sun, Moon, Loader2, KeyRound } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { api } from '../utils/api';
 import toast from 'react-hot-toast';
 import Logo from '../components/Logo';
 
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
+const ResetPasswordPage = () => {
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get('token') || '';
+
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
   const { isDark, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      toast.error('Please fill in all fields');
+    if (!token) {
+      toast.error('This reset link is missing its token. Please request a new one.');
+      return;
+    }
+
+    if (!password || !confirmPassword) {
+      toast.error('Please fill in both fields');
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error('Password must be at least 6 characters');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
       return;
     }
 
     setLoading(true);
     try {
-      const response = await api.login(email, password);
-      login(response.user);
-      toast.success('Welcome back!');
-      navigate('/');
+      const response = await api.resetPassword(token, password);
+      toast.success(response.message || 'Password reset successfully');
+      navigate('/login');
     } catch (error) {
-      toast.error(error.message || 'Login failed');
+      toast.error(error.message || 'Failed to reset password');
     } finally {
       setLoading(false);
     }
@@ -49,33 +64,11 @@ const LoginPage = () => {
 
         <div className="relative max-w-md">
           <h1 className="font-serif text-4xl font-medium leading-[1.15] text-gray-900 dark:text-white">
-            Where ideas find their voice.
+            Almost back in.
           </h1>
           <p className="mt-5 text-[15px] leading-relaxed text-gray-600 dark:text-gray-400">
-            A quiet corner of the internet for writers who&rsquo;d rather finish a messy draft than perfect one that never ships.
+            Choose a new password and you&rsquo;ll be right back to where you left off.
           </p>
-
-          <div className="mt-10 -rotate-2 rounded-2xl border border-gray-200/70 bg-white/80 p-5 shadow-xl backdrop-blur dark:border-white/10 dark:bg-white/[0.04]">
-            <div className="flex items-center justify-between">
-              <span className="badge badge-primary">Essay</span>
-              <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-500">
-                <Clock size={12} />
-                <span>6 min read</span>
-              </div>
-            </div>
-            <h3 className="mt-3 font-serif text-lg font-medium text-gray-900 dark:text-gray-100">
-              On Writing Badly First
-            </h3>
-            <p className="mt-1.5 text-sm text-gray-500 dark:text-gray-400">
-              Every clean draft was once a mess. Here&rsquo;s why that&rsquo;s the whole point, and how to stop waiting for the good version.
-            </p>
-            <div className="mt-4 flex items-center gap-2.5 border-t border-gray-200/70 pt-4 dark:border-white/10">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary-400 to-primary-600 text-xs font-semibold text-white">
-                M
-              </div>
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Mira Chen</span>
-            </div>
-          </div>
         </div>
 
         <p className="relative text-xs text-gray-500 dark:text-gray-600">
@@ -83,7 +76,7 @@ const LoginPage = () => {
         </p>
       </div>
 
-      {/* Auth form */}
+      {/* Reset password form */}
       <div className="relative flex min-h-screen flex-col px-6 py-8 sm:px-12 lg:min-h-0 lg:justify-center lg:px-20 lg:py-0">
         <div className="flex items-center justify-between lg:absolute lg:right-12 lg:top-10">
           <Logo size={36} wordmarkClassName="text-lg text-gray-900 dark:text-white" className="lg:hidden" />
@@ -99,43 +92,30 @@ const LoginPage = () => {
 
         <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center lg:flex-none">
           <div className="mb-8">
-            <h2 className="font-serif text-3xl font-medium text-gray-900 dark:text-white">Welcome!</h2>
+            <h2 className="font-serif text-3xl font-medium text-gray-900 dark:text-white">Set a new password</h2>
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              Sign in to begin and pick up right where you left off anytime.
+              Make it something you&rsquo;ll remember this time.
             </p>
           </div>
 
+          {!token && (
+            <div className="mb-5 flex items-start gap-2.5 rounded-lg border border-dashed border-amber-300 bg-amber-50 px-3.5 py-2.5 text-xs text-amber-700 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-400">
+              <KeyRound size={15} className="mt-0.5 shrink-0" />
+              <span>
+                This link is missing its reset token. Please use the link from your email, or{' '}
+                <Link to="/forgot-password" className="font-medium underline">
+                  request a new one
+                </Link>
+                .
+              </span>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Email address
+              <label htmlFor="password" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                New password
               </label>
-              <div className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2.5 transition-colors focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-500/20 dark:border-gray-800 dark:bg-gray-custom">
-                <Mail size={17} className="shrink-0 text-gray-400" />
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  className="w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none dark:text-gray-100 dark:placeholder-gray-500"
-                  required
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-1.5 flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Password
-                </label>
-                <Link
-                  to="/forgot-password"
-                  className="text-xs font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300"
-                >
-                  Forgot password?
-                </Link>
-              </div>
               <div className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2.5 transition-colors focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-500/20 dark:border-gray-800 dark:bg-gray-custom">
                 <Lock size={17} className="shrink-0 text-gray-400" />
                 <input
@@ -143,7 +123,7 @@ const LoginPage = () => {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
+                  placeholder="At least 6 characters"
                   className="w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none dark:text-gray-100 dark:placeholder-gray-500"
                   required
                 />
@@ -158,34 +138,43 @@ const LoginPage = () => {
               </div>
             </div>
 
+            <div>
+              <label
+                htmlFor="confirmPassword"
+                className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >
+                Confirm new password
+              </label>
+              <div className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-2.5 transition-colors focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-500/20 dark:border-gray-800 dark:bg-gray-custom">
+                <Lock size={17} className="shrink-0 text-gray-400" />
+                <input
+                  id="confirmPassword"
+                  type={showPassword ? 'text' : 'password'}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Re-enter your new password"
+                  className="w-full bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none dark:text-gray-100 dark:placeholder-gray-500"
+                  required
+                />
+              </div>
+            </div>
+
             <button
               type="submit"
               disabled={loading}
               className="btn-primary !py-3 flex w-full items-center justify-center space-x-2"
             >
-              {loading ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
-              ) : (
-                <>
-                  <LogIn size={18} />
-                  <span>Sign in</span>
-                </>
-              )}
+              {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <span>Reset password</span>}
             </button>
           </form>
 
-          <div className="mt-5 rounded-lg border border-dashed border-gray-200 bg-gray-50 px-3.5 py-2.5 text-xs text-gray-500 dark:border-gray-800 dark:bg-gray-custom dark:text-gray-500">
-            Demo account &mdash;{' '}
-            <span className="text-gray-700 dark:text-gray-400">john@example.com / password123</span>
-          </div>
-
           <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
-            New to BlogFoundry?{' '}
+            Remembered it after all?{' '}
             <Link
-              to="/signup"
+              to="/login"
               className="font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300"
             >
-              Create an account
+              Sign in
             </Link>
           </p>
         </div>
@@ -194,4 +183,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ResetPasswordPage;

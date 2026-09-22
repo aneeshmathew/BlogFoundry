@@ -38,6 +38,49 @@ export const api = {
     return response.json();
   },
 
+  forgotPassword: async (email) => {
+    const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      const error = new Error(data.message || 'Failed to request password reset');
+      error.secondsRemaining = data.secondsRemaining;
+      throw error;
+    }
+    return data;
+  },
+
+  resendPasswordReset: async (email) => {
+    const response = await fetch(`${API_BASE_URL}/auth/forgot-password/resend`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      const error = new Error(data.message || 'Failed to resend password reset');
+      error.secondsRemaining = data.secondsRemaining;
+      throw error;
+    }
+    return data;
+  },
+
+  resetPassword: async (token, password) => {
+    const response = await fetch(`${API_BASE_URL}/auth/reset-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token, password })
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to reset password');
+    }
+    return data;
+  },
+
   // Posts
   getAllPosts: async () => {
     const response = await fetch(`${API_BASE_URL}/posts`);
