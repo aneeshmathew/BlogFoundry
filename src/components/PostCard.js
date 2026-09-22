@@ -39,7 +39,7 @@ const PostCard = ({ post }) => {
           </div>
         </div>
 
-        <h2 className="text-xl font-semibold text-gray-100 mb-3 group-hover:text-primary-400 transition-colors">
+        <h2 className="text-lg font-semibold text-gray-100 mb-3 group-hover:text-primary-400 transition-colors">
           {post.title}
         </h2>
 

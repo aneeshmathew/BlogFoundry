@@ -144,7 +144,7 @@ const PostDetailPage = () => {
             )}
           </div>
 
-          <h1 className="text-4xl font-semibold text-gray-100 mb-6">{post.title}</h1>
+          <h1 className="text-xl font-semibold text-gray-100 mb-6">{post.title}</h1>
 
           <div className="flex items-center justify-between pb-6 border-b border-gray-800 mb-8">
             <div className="flex items-center space-x-4">

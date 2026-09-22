@@ -38,7 +38,7 @@ const Navbar = () => {
                 to="/"
                 className={`flex items-center space-x-2 border px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   isActive('/')
-                    ? 'border-primary-500 text-primary-400'
+                    ? 'border-primary-500 text-white'
                     : 'border-transparent text-gray-400 hover:border-gray-700 hover:text-gray-100'
                 }`}
               >
@@ -50,7 +50,7 @@ const Navbar = () => {
                 to="/my-posts"
                 className={`flex items-center space-x-2 border px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   isActive('/my-posts')
-                    ? 'border-primary-500 text-primary-400'
+                    ? 'border-primary-500 text-white'
                     : 'border-transparent text-gray-400 hover:border-gray-700 hover:text-gray-100'
                 }`}
               >

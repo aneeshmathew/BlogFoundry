@@ -108,7 +108,7 @@ const EditPostPage = () => {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-semibold text-gray-100 mb-2">Edit Post</h1>
+          <h1 className="text-xl font-semibold text-gray-100 mb-2">Edit Post</h1>
           <p className="text-gray-400">Update your article</p>
         </div>
 

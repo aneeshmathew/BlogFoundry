@@ -70,7 +70,7 @@ const HomePage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-semibold text-gray-100 mb-2">
+          <h1 className="text-xl font-semibold text-gray-100 mb-2">
             Discover Stories
           </h1>
           <p className="text-gray-400">
@@ -98,7 +98,7 @@ const HomePage = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-lg border text-sm font-medium whitespace-nowrap transition-colors ${
                   selectedCategory === category
-                    ? 'border-primary-500 text-primary-400'
+                    ? 'border-primary-500 text-white'
                     : 'border-gray-700 text-gray-400 hover:border-gray-500 hover:text-gray-200'
                 }`}
               >
@@ -115,7 +115,7 @@ const HomePage = () => {
             <div className="w-16 h-16 bg-gray-950 border border-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
               <Search size={32} className="text-gray-600" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-300 mb-2">No posts found</h3>
+            <h3 className="text-lg font-semibold text-gray-300 mb-2">No posts found</h3>
             <p className="text-gray-500">
               Try adjusting your search or filter criteria
             </p>

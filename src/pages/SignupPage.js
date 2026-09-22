@@ -53,7 +53,7 @@ const SignupPage = () => {
           <div className="inline-flex mb-4">
             <LogoMark size={64} />
           </div>
-          <h1 className="text-3xl font-semibold text-gray-100 mb-2">Create Account</h1>
+          <h1 className="text-xl font-semibold text-gray-100 mb-2">Create Account</h1>
           <p className="text-gray-400">Sign up to get started with BlogFoundry</p>
         </div>
 

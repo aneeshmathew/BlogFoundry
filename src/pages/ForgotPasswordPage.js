@@ -67,7 +67,7 @@ const ForgotPasswordPage = () => {
         <Logo size={40} wordmarkClassName="text-xl text-gray-900 dark:text-white" />
 
         <div className="relative max-w-md">
-          <h1 className="font-serif text-4xl font-medium leading-[1.15] text-gray-900 dark:text-white">
+          <h1 className="font-serif text-xl font-medium leading-[1.3] text-gray-900 dark:text-white">
             Locked out happens to everyone.
           </h1>
           <p className="mt-5 text-[15px] leading-relaxed text-gray-600 dark:text-gray-400">
@@ -106,7 +106,7 @@ const ForgotPasswordPage = () => {
           {!submitted ? (
             <>
               <div className="mb-8">
-                <h2 className="font-serif text-3xl font-medium text-gray-900 dark:text-white">
+                <h2 className="font-serif text-xl font-medium text-gray-900 dark:text-white">
                   Forgot your password?
                 </h2>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
@@ -147,7 +147,7 @@ const ForgotPasswordPage = () => {
               <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400">
                 <MailCheck size={22} />
               </div>
-              <h2 className="font-serif text-2xl font-medium text-gray-900 dark:text-white">Check your email</h2>
+              <h2 className="font-serif text-lg font-medium text-gray-900 dark:text-white">Check your email</h2>
               <p className="mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
                 If an account exists for <span className="font-medium text-gray-700 dark:text-gray-300">{email}</span>,
                 a reset link is on its way. The link expires in 30 minutes.

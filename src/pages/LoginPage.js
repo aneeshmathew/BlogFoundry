@@ -48,7 +48,7 @@ const LoginPage = () => {
         <Logo size={40} wordmarkClassName="text-xl text-gray-900 dark:text-white" />
 
         <div className="relative max-w-md">
-          <h1 className="font-serif text-4xl font-medium leading-[1.15] text-gray-900 dark:text-white">
+          <h1 className="font-serif text-xl font-medium leading-[1.3] text-gray-900 dark:text-white">
             Where ideas find their voice.
           </h1>
           <p className="mt-5 text-[15px] leading-relaxed text-gray-600 dark:text-gray-400">
@@ -99,7 +99,7 @@ const LoginPage = () => {
 
         <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center lg:flex-none">
           <div className="mb-8">
-            <h2 className="font-serif text-3xl font-medium text-gray-900 dark:text-white">Welcome!</h2>
+            <h2 className="font-serif text-xl font-medium text-gray-900 dark:text-white">Welcome!</h2>
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
               Sign in to begin and pick up right where you left off anytime.
             </p>
