@@ -83,7 +83,7 @@ const Navbar = () => {
 
               <button
                 onClick={handleLogout}
-                className="border border-transparent text-gray-400 hover:border-gray-700 hover:text-gray-100 transition-colors p-2 rounded-lg"
+                className="btn-ghost !p-2"
                 title="Logout"
               >
                 <LogOut size={18} />

@@ -116,14 +116,14 @@ const MyPostsPage = () => {
                   <div className="flex items-center space-x-2 ml-4">
                     <Link
                       to={`/edit/${post._id}`}
-                      className="p-2 border border-transparent text-gray-400 hover:border-primary-800 hover:text-primary-400 rounded-lg transition-colors"
+                      className="p-2 border border-transparent text-white hover:border-primary-500 rounded-lg transition-colors"
                       title="Edit post"
                     >
                       <Edit2 size={18} />
                     </Link>
                     <button
                       onClick={() => setDeleteConfirm(post._id)}
-                      className="p-2 border border-transparent text-gray-400 hover:border-error-800 hover:text-error-400 rounded-lg transition-colors"
+                      className="p-2 border border-transparent text-white hover:border-error-500 rounded-lg transition-colors"
                       title="Delete post"
                     >
                       <Trash2 size={18} />

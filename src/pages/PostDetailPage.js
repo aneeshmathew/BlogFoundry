@@ -128,14 +128,14 @@ const PostDetailPage = () => {
               <div className="flex items-center space-x-2">
                 <Link
                   to={`/edit/${post._id}`}
-                  className="text-gray-400 hover:text-primary-400 transition-colors flex items-center space-x-1"
+                  className="flex items-center space-x-1 rounded-lg border border-transparent px-2 py-1 text-white transition-colors hover:border-primary-500"
                 >
                   <Edit2 size={16} />
                   <span className="text-sm">Edit</span>
                 </Link>
                 <button
                   onClick={() => setDeleteConfirm(true)}
-                  className="text-gray-400 hover:text-error-400 transition-colors flex items-center space-x-1"
+                  className="flex items-center space-x-1 rounded-lg border border-transparent px-2 py-1 text-white transition-colors hover:border-error-500"
                 >
                   <Trash2 size={16} />
                   <span className="text-sm">Delete</span>
